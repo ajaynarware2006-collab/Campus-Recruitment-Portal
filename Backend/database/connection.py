@@ -9,7 +9,6 @@ def connect_db():
             user=st.secrets["DB_USER"],
             password=st.secrets["DB_PASSWORD"],
             port=st.secrets["DB_PORT"])
-
         return connection
     
     except Exception as e:
