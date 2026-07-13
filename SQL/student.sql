@@ -11,7 +11,7 @@
 CREATE TABLE IF NOT EXISTS student_profiles(
     profile_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     full_name VARCHAR(254) NOT NULL,
-    encrollment_no VARCHAR(15) UNIQUE NOT NULL,
+    enrollment_no VARCHAR(15) UNIQUE NOT NULL,
     cgpa NUMERIC(3,2),
     profile_img_path TEXT,
     user_id INTEGER NOT NULL UNIQUE,

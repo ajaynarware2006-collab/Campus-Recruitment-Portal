@@ -16,3 +16,5 @@ def connect_db():
     
 def close_db(connection):
         connection.close()
+    
+print(connect_db())
