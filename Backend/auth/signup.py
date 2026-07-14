@@ -1,6 +1,6 @@
 from validator import validate_email,validate_name,validate_password
 from password import hash_password
-from database.queries import email_exists,create_user
+from database.user_queries import email_exists,create_user
 from database.connection import connect_db
 
 def register_user(name,email,password,role):

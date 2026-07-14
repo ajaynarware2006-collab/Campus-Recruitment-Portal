@@ -1,34 +1,3 @@
-def email_exists(connection,email):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM users WHERE email=%s;",(email,))
-        user=cursor.fetchone()
-
-        if user:
-            return True
-        return False
-
-    
-def create_user(connecting,email,hash_pass,role):
-    connection=connecting()
-    with connection.cursor() as cursor:
-        cursor.execute("INSERT INTO users(email,password_hash,user_role) VALUES(%s,%s,%s) RETURNING user_id;",(email,hash_pass,role))
-        cursor.commit()
-        user_id=cursor.fetchone()
-        if not user_id:
-            return None
-        
-        return user_id[0]
-
-def check_login_details(connecting,email):
-    connection=connecting()
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT account_status,user_role,user_id,password_hash FROM users WHERE email=%s;",(email,))
-        user=cursor.fetchone()
-        if not user:
-            return None
-        
-        return user
-
 def create_profile(
     connecting,
     user_id,
@@ -61,12 +30,3 @@ def create_profile(
         else:
             cursor.execute("UPDATE student_profiles SET full_name=%s,enrollment_no=%s,cgpa=%s,profile_img_path=%s,branch=%s,semester=%s,contact=%s) WHERE user_id=%s;",(full_name,enroll,cgpa,profile_img_path,branch,semester,contact,user_id))
             cursor.commit()
-
-
-
-
-
-
-    
-    
-        

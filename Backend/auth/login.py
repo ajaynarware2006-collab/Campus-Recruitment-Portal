@@ -1,4 +1,4 @@
-from database.queries import email_exists,check_login_details
+from database.user_queries import email_exists,check_login_details
 from validator import validate_email,validate_password
 from database.connection import connect_db
 from password import check_password
