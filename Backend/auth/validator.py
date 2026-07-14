@@ -52,3 +52,38 @@ def validate_password(password,confirm_pass):
     
     return True
     
+def validate_branch(branch):
+    if not branch.isalpha():
+        return False
+    elif len(branch) > 5 or len(branch) < 2:
+        return False
+    
+    return True
+
+def validate_semester(sem):
+    if not sem.isnum():
+        return False
+    elif sem > 8 or sem < 0:
+        return False
+    
+    return True
+
+def validate_cgpa(cgpa):
+    if not cgpa.isdecimal():
+        return False
+    elif cgpa > 10 or cgpa < 0:
+        return False
+    
+    return True
+
+def validate_profile_image(path):
+    if not path.endswith((".png",".jpg","jpeg")):
+        return False
+    
+    return True
+
+def validate_resume(path):
+    if not path.endswith(".pdf"):
+        return False
+    
+    return True
