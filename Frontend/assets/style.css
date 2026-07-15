@@ -1,0 +1,194 @@
+/* ============================
+   Global
+============================ */
+
+.block-container{
+    padding-top:2rem;
+    padding-bottom:2rem;
+    max-width:1400px;
+}
+
+.stApp{
+    background:#0f172a;
+    color:#f8fafc;
+}
+
+/* ============================
+   Sidebar
+============================ */
+
+section[data-testid="stSidebar"]{
+    background:#111827;
+    border-right:1px solid #1f2937;
+}
+
+/* ============================
+   Buttons
+============================ */
+
+.stButton>button{
+    width:100%;
+    height:48px;
+
+    border-radius:10px;
+    border:none;
+
+    background:#2563eb;
+    color:white;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.stButton>button:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+    cursor:pointer;
+}
+
+/* ============================
+   Text Inputs
+============================ */
+
+.stTextInput input{
+
+    border-radius:10px;
+
+    border:1px solid #334155;
+
+    background:#1e293b;
+
+    color:white;
+}
+
+/* ============================
+   Selectbox
+============================ */
+
+.stSelectbox{
+
+    border-radius:10px;
+}
+
+/* ============================
+   Metrics
+============================ */
+
+[data-testid="stMetric"]{
+
+    background:#1e293b;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    border:1px solid #334155;
+}
+
+/* ============================
+   DataFrames
+============================ */
+
+[data-testid="stDataFrame"]{
+
+    border-radius:12px;
+
+    border:1px solid #334155;
+}
+
+/* ============================
+   Forms
+============================ */
+
+form{
+
+    background:#111827;
+
+    padding:20px;
+
+    border-radius:12px;
+}
+
+/* ============================
+   Cards
+============================ */
+
+.card{
+
+    background:#1e293b;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    border:1px solid #334155;
+
+    margin-bottom:15px;
+}
+
+/* ============================
+   Titles
+============================ */
+
+h1{
+
+    color:white;
+
+    font-weight:700;
+}
+
+h2{
+
+    color:#e2e8f0;
+}
+
+h3{
+
+    color:#cbd5e1;
+}
+
+/* ============================
+   Links
+============================ */
+
+a{
+
+    color:#60a5fa;
+
+    text-decoration:none;
+}
+
+a:hover{
+
+    text-decoration:underline;
+}
+
+/* ============================
+   Scrollbar
+============================ */
+
+::-webkit-scrollbar{
+
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111827;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#64748b;
+}
