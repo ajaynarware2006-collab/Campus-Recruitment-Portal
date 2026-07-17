@@ -3,7 +3,8 @@ from Backend.database.application_queries import (
     apply_job,
     withdraw_application,
     get_student_applications,
-    get_application
+    get_application,
+    get_application_history
 )
 
 
@@ -52,3 +53,6 @@ def view_application(
         application_id,
         connect_db
     )
+
+def view_application_history(student_id):
+    return get_application_history(connect_db,student_id)

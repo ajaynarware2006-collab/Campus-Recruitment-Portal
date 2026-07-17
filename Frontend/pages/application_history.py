@@ -1,7 +1,7 @@
 import streamlit as st
 
 from Backend.student.application import (
-    get_application_history,
+    view_application_history,
     withdraw_application
 )
 
@@ -26,7 +26,7 @@ def show_application_history():
 
     student_id = get_user_id()
 
-    applications = get_application_history(
+    applications = view_application_history(
         student_id
     )
 

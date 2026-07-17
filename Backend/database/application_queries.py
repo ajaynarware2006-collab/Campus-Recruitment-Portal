@@ -1,4 +1,39 @@
-from Backend.database.connection import connect_db
+
+def get_application_history(connecting,student_id):
+    connection = connecting()
+
+    with connection.cursor() as cursor:
+
+        cursor.execute(
+            """
+            SELECT
+                a.application_id,
+                sp.full_name AS student,
+                j.job_title AS job,
+                rp.company_name AS company,
+                a.applied_at,
+                a.application_status
+            FROM applications AS a
+
+            JOIN student_profiles AS sp
+            ON a.student_profile_id = sp.student_profile_id
+
+            JOIN jobs AS j
+            ON a.job_id = j.job_id
+
+            JOIN recruiter_profiles AS rp
+            ON j.recruiter_profile_id = rp.recruiter_profile_id
+
+            WHERE a.student_profile_id = %s
+
+            ORDER BY a.applied_at DESC;
+            """,
+            (student_id,)
+        )
+
+        history=cursor.fethall()
+
+        return history
 
 
 def apply_job(connecting, job_id, student_profile_id):
