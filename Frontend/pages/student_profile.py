@@ -1,8 +1,7 @@
 import streamlit as st
 
 from Backend.student.profile import (
-    get_profile,
-    update_profile
+    complete_profile
 )
 
 from components.navbar import render_navbar
@@ -36,7 +35,7 @@ def show_student_profile():
 
     student_id = get_user_id()
 
-    profile = get_profile(student_id)
+    profile = complete_profile(student_id)
 
     if profile:
 
@@ -79,7 +78,7 @@ def show_student_profile():
 
             resume_path = resume.name
 
-        success = update_profile(
+        success = complete_profile(
             student_id,
             enrollment,
             contact,

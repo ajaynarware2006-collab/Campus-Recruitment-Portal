@@ -1,5 +1,5 @@
-from database.connection import connect_db
-from database.application_queries import (
+from Backend.database.connection import connect_db
+from Backend.database.application_queries import (
     shortlist_application,
     reject_application,
     accept_application,

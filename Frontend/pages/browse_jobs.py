@@ -1,15 +1,12 @@
 import streamlit as st
 
-from Backend.student.jobs import (
-    get_all_jobs,
-    search_jobs
-)
+from Backend.student.jobs import get_all_jobs,search_by_keyword
 
 from components.navbar import render_navbar
 from components.sidebar import render_sidebar
 from components.footer import render_footer
 
-from components import job_card
+from components.card import job_card
 
 from utils.session import (
     set_current_page
@@ -30,7 +27,7 @@ def show_browse_jobs():
 
     if search.strip():
 
-        jobs = search_jobs(search)
+        jobs = search_by_keyword(search)
 
     else:
 

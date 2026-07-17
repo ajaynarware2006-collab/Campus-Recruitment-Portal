@@ -1,7 +1,7 @@
-from auth.validator import validate_branch,validate_cgpa,validate_contact,validate_email,validate_enroll,validate_name,validate_profile_image,validate_resume,validate_semester
-from database.user_queries import email_exists
-from database.student_queries import create_profile
-from database.connection import connect_db
+from Backend.auth.validator import validate_branch,validate_cgpa,validate_contact,validate_email,validate_enroll,validate_name,validate_profile_image,validate_resume,validate_semester
+from Backend.database.user_queries import email_exists
+from Backend.database.student_queries import create_profile
+from Backend.database.connection import connect_db
 
 def complete_profile(role,
         user_id,

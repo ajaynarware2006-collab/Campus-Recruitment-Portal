@@ -1,6 +1,6 @@
 import streamlit as st
 
-from Backend.student import dashboard
+from Backend.student.dashborad import dashboard
 
 from components.navbar import render_navbar
 from components.sidebar import render_sidebar

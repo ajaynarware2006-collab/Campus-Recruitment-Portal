@@ -1,5 +1,5 @@
-from database.connection import connect_db
-from database.job_queries import (
+from Backend.database.connection import connect_db
+from Backend.database.job_queries import (
     create_job,
     update_job,
     delete_job,

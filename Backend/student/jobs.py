@@ -1,13 +1,15 @@
-from database.connection import connect_db
-from database.search_queries import (
+from Backend.database.connection import connect_db
+from Backend.database.search_queries import (
     get_latest_jobs,
     get_job_by_id,
-    search_jobs,
+    search,
     filter_by_location,
     filter_by_job_type,
     filter_by_work_mode,
     filter_by_min_cgpa,
-    get_recommended_jobs
+    get_recommended_jobs,
+    get_jobs,
+    details
 )
 
 
@@ -26,9 +28,9 @@ def job_details(job_id):
     )
 
 
-def search(keyword):
+def search_by_keyword(keyword):
 
-    return search_jobs(
+    return search(
         connect_db,
         keyword
     )
@@ -72,3 +74,9 @@ def recommended_jobs(cgpa):
         connect_db,
         cgpa
     )
+
+def get_all_jobs():
+    return get_jobs(connect_db)
+
+def get_job_details(job_id):
+    return details(connect_db,job_id)

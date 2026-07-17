@@ -1,4 +1,4 @@
-from database.connection import connect_db
+from Backend.database.connection import connect_db
 
 
 def student_dashboard(connecting, student_profile_id):

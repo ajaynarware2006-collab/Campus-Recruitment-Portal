@@ -40,14 +40,8 @@ def validate_contact(contact):
     
     return True
 
-def validate_password(password,confirm_pass):
+def validate_password(password):
     if len(password) < 8 or len(password) > 20:
-        return False
-
-    elif len(confirm_pass) < 8 or len(confirm_pass) > 20:
-        return False
-
-    elif password != confirm_pass:
         return False
     
     return True

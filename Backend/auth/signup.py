@@ -1,7 +1,7 @@
-from validator import validate_email,validate_name,validate_password
-from password import hash_password
-from database.user_queries import email_exists,create_user
-from database.connection import connect_db
+from Backend.auth.validator import validate_email,validate_name,validate_password
+from Backend.auth.password import hash_password
+from Backend.database.user_queries import email_exists,create_user
+from Backend.database.connection import connect_db
 
 def register_user(name,email,password,role):
 

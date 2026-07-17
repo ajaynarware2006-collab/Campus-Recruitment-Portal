@@ -1,4 +1,4 @@
-from auth.recruiter_validator import (
+from Backend.auth.recruiter_validator import (
     validate_hr_name,
     validate_company_name,
     validate_designation,
@@ -12,8 +12,8 @@ from auth.recruiter_validator import (
     validate_company_description
 )
 
-from database.recruiter_queries import create_recruiter_profile
-from database.connection import connect_db
+from Backend.database.recruiter_queries import create_recruiter_profile
+from Backend.database.connection import connect_db
 
 
 def complete_recruiter_profile(

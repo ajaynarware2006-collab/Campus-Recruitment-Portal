@@ -1,4 +1,4 @@
-from database.connection import connect_db
+from Backend.database.connection import connect_db
 
 
 def get_latest_jobs(connecting):
@@ -37,7 +37,7 @@ def get_job_by_id(connecting, job_id):
         return cursor.fetchone()
 
 
-def search_jobs(connecting, keyword):
+def search(connecting, keyword):
 
     connection = connecting()
 
@@ -166,6 +166,83 @@ def get_recommended_jobs(connecting, cgpa):
             ORDER BY created_at DESC;
             """,
             (cgpa,)
+        )
+
+        return cursor.fetchall()
+
+def get_jobs(connecting):
+
+    connection = connecting()
+
+    with connection.cursor() as cursor:
+        
+        cursor.execute(
+            """
+            SELECT
+                j.job_id,
+                j.job_title,
+                r.company_name,
+                j.location,
+                j.job_type,
+                j.work_mode,
+
+                CONCAT(
+                    '₹',
+                    j.salary_min,
+                    ' - ₹',
+                    j.salary_max
+                ) AS salary,
+
+                j.application_deadline
+
+            FROM jobs AS j
+
+            JOIN recruiter_profiles AS r
+            ON j.recruiter_profile_id = r.recruiter_profile_id
+
+            WHERE j.status = 'Open'
+
+            ORDER BY j.application_deadline ASC;
+            """,
+        )
+
+        return cursor.fetchall()
+    
+def details(connecting,job_id):
+
+    connection = connecting()
+
+    with connection.cursor() as cursor:
+        
+        cursor.execute(
+            """
+            SELECT
+                j.job_title,
+                r.company_name,
+                j.location,
+                j.job_type,
+                j.work_mode,
+
+                CONCAT(
+                    '₹',
+                    j.salary_min,
+                    ' - ₹',
+                    j.salary_max
+                ) AS salary,
+
+                j.description,
+                j.skills_required,
+                j.application_deadline
+
+            FROM jobs AS j
+
+            JOIN recruiter_profiles AS r
+            ON j.recruiter_profile_id = r.recruiter_profile_id
+
+            WHERE j.status = 'Open' AND job_id=%s
+
+            ORDER BY j.application_deadline ASC;
+            """,(job_id,)
         )
 
         return cursor.fetchall()

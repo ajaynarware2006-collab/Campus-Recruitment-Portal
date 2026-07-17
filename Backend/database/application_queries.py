@@ -1,4 +1,4 @@
-from database.connection import connect_db
+from Backend.database.connection import connect_db
 
 
 def apply_job(connecting, job_id, student_profile_id):

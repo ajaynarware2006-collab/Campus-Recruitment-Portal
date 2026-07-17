@@ -1,5 +1,5 @@
-from database.connection import connect_db
-from database.admin_queries import (
+from Backend.database.connection import connect_db
+from Backend.database.admin_queries import (
     total_platform_statistics,
     get_all_users
 )

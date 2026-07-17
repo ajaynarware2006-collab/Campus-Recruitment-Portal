@@ -1,5 +1,5 @@
-from database.connection import connect_db
-from database.dashboard_queries import admin_dashboard
+from Backend.database.connection import connect_db
+from Backend.database.dashboard_queries import admin_dashboard
 
 
 def dashboard():

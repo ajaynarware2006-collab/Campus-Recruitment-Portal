@@ -1,5 +1,5 @@
-from database.connection import connect_db
-from database.admin_queries import (
+from Backend.database.connection import connect_db
+from Backend.database.admin_queries import (
     get_all_users,
     get_user,
     update_account_status,

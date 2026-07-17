@@ -1,4 +1,4 @@
-from validator import (
+from Backend.auth.validator import (
     validate_contact,
     validate_email,
     validate_name

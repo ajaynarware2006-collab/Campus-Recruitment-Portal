@@ -12,7 +12,7 @@ def create_user(connecting,email,hash_pass,role):
     connection=connecting()
     with connection.cursor() as cursor:
         cursor.execute("INSERT INTO users(email,password_hash,user_role) VALUES(%s,%s,%s) RETURNING user_id;",(email,hash_pass,role))
-        cursor.commit()
+        connection.commit()
         user_id=cursor.fetchone()
         if not user_id:
             return None
