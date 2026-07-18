@@ -1,30 +1,28 @@
 from Backend.database.user_queries import check_login_details
-from Backend.auth.validator import validate_email,validate_password
+from Backend.auth.validator import validate_email, validate_password
 from Backend.database.connection import connect_db
 from Backend.auth.password import check_password
 
-def login_user(email,password):
+
+def login_user(email, password):
+
     if not validate_email(email):
-        return False
+        return "Invalid Email"
+
     if not validate_password(password):
-        return False
-    
-    user=check_login_details(connect_db,email)
-    if not user:
-        return False
-    status=user[0]
-    role=user[1]
-    user_id=user[2]
-    password_hash=user[3]
+        return "Invalid Password Structure"
 
-    if status != "Active":
-        return False
-    
-    if not check_password(password,password_hash):
-        return False
-    
-    return role,user_id
-    
+    user = check_login_details(connect_db, email)
 
-    
-    
+    if user is None:
+        return "User Not Found"
+
+    account_status, role, user_id, password_hash = user
+
+    if account_status != "Active":
+        return "User is Suspended or Inactive"
+
+    if not check_password(password, password_hash):
+        return "Invalid Password"
+
+    return role, user_id

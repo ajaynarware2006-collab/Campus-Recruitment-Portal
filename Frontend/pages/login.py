@@ -12,8 +12,6 @@ def show_login():
 
     st.title("Login")
 
-    st.write("")
-
     with st.form("login_form"):
 
         email = st.text_input(
@@ -37,12 +35,8 @@ def show_login():
             password
         )
 
-        if not result:
-
-            st.error(
-                "Invalid email or password."
-            )
-
+        if isinstance(result, str):
+            st.error(result)
             return
 
         role, user_id = result
@@ -56,7 +50,7 @@ def show_login():
         if role == "Student":
 
             set_current_page(
-                "student_dashboard"
+                "student_profile"
             )
 
         elif role == "Recruiter":

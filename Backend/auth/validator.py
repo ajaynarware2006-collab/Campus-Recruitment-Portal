@@ -1,83 +1,107 @@
 import re
 
-def validate_name(name):
-    name=name.strip()
-    name=re.split(r'[,-/s]+',name)
 
-    for word in name:
-        if not word.isalpha():
+def validate_name(name):
+    name = name.strip()
+
+    if not name:
+        return False
+
+    words = re.split(r"[,\-\s]+", name)
+
+    for word in words:
+        if word and not word.isalpha():
             return False
+
     return True
+
 
 def validate_email(email):
-    if not email.endswith(("@gmail.com",".ies@ipsacademy.org")):
-        return False
+    email = email.strip().lower()
+
+    if email.endswith("@gmail.com"):
+        username = email.split("@")[0]
+
+    elif email.endswith(".ies@ipsacademy.org"):
+        username = email.split(".ies@")[0]
+
     else:
-        if email.endswith("@gmail.com"):
-            email=email.split("@")
-        else:
-            email=email.split(".ies@")
-    
-    if not email[0].isalnum():
         return False
 
-    return True
+    return username.isalnum()
 
 
 def validate_enroll(enroll):
+    enroll = enroll.strip()
+
     if not enroll.isalnum():
         return False
-    elif len(enroll) > 13 or len(enroll) < 9:
-        return False
-    
-    return True
+
+    return 9 <= len(enroll) <= 13
+
 
 def validate_contact(contact):
+    contact = str(contact).strip()
+
     if not contact.isdigit():
         return False
-    elif len(contact) > 13 or len(contact) < 9:
-        return False
-    
-    return True
+
+    return 10 <= len(contact) <= 13
+
 
 def validate_password(password):
     if len(password) < 8 or len(password) > 20:
         return False
-    
+
+    if not re.search(r"[A-Z]", password):
+        return False
+
+    if not re.search(r"[a-z]", password):
+        return False
+
+    if not re.search(r"\d", password):
+        return False
+
+    if not re.search(r"[!@#$%^&*(),.?\":{}|<>_\-+=/\\[\]]", password):
+        return False
+
     return True
-    
+
+
 def validate_branch(branch):
+    branch = branch.strip()
+
     if not branch.isalpha():
         return False
-    elif len(branch) > 5 or len(branch) < 2:
-        return False
-    
-    return True
+
+    return 2 <= len(branch) <= 5
+
 
 def validate_semester(sem):
-    if not sem.isnum():
+    if not str(sem).isdigit():
         return False
-    elif sem > 8 or sem < 0:
-        return False
-    
-    return True
+
+    sem = int(sem)
+
+    return 1 <= sem <= 8
+
 
 def validate_cgpa(cgpa):
-    if not cgpa.isdecimal():
+    try:
+        cgpa = float(cgpa)
+    except ValueError:
         return False
-    elif cgpa > 10 or cgpa < 0:
-        return False
-    
-    return True
+
+    return 0 <= cgpa <= 10
+
 
 def validate_profile_image(path):
-    if not path.endswith((".png",".jpg","jpeg")):
-        return False
-    
-    return True
+    path = path.lower()
+
+    return path.endswith((".png", ".jpg", ".jpeg"))
+
 
 def validate_resume(path):
-    if not path.endswith(".pdf"):
-        return False
-    
-    return True
+    path = path.lower()
+
+    return path.endswith(".pdf")

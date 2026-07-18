@@ -12,17 +12,11 @@ def show_signup():
 
     st.title("Create Account")
 
-    st.write("")
-
     with st.form("signup_form"):
 
-        name = st.text_input(
-            "Full Name"
-        )
+        name = st.text_input("Full Name")
 
-        email = st.text_input(
-            "Email Address"
-        )
+        email = st.text_input("Email Address")
 
         password = st.text_input(
             "Password",
@@ -51,11 +45,7 @@ def show_signup():
     if submitted:
 
         if password != confirm_password:
-
-            st.error(
-                "Passwords do not match."
-            )
-
+            st.error("Passwords do not match.")
             return
 
         result = register_user(
@@ -65,20 +55,8 @@ def show_signup():
             role
         )
 
-        if result is False:
-
-            st.error(
-                "Email already exists."
-            )
-
-            return
-
         if isinstance(result, str):
-
-            st.error(
-                result
-            )
-
+            st.error(result)
             return
 
         login_user(
@@ -88,39 +66,22 @@ def show_signup():
         )
 
         if role == "Student":
-
-            set_current_page(
-                "student_profile"
-            )
+            set_current_page("student_profile")
 
         elif role == "Recruiter":
+            set_current_page("recruiter_profile")
 
-            set_current_page(
-                "recruiter_profile"
-            )
+        else:
+            set_current_page("admin_dashboard")
 
-        elif role == "Admin":
-
-            set_current_page(
-                "admin_dashboard"
-            )
-
-        st.success(
-            "Account created successfully."
-        )
-
+        st.success("Account created successfully.")
         st.rerun()
 
-    st.write("")
-    st.write("")
+    st.divider()
 
     if st.button(
         "Already have an account?",
         use_container_width=True
     ):
-
-        set_current_page(
-            "login"
-        )
-
+        set_current_page("login")
         st.rerun()
