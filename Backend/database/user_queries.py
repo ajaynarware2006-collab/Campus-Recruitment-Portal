@@ -28,3 +28,10 @@ def check_login_details(connecting,email):
             return None
         
         return user
+
+
+def block_user(connecting,email):
+    connection=connecting()
+    with connection.cursor() as cursor:
+        cursor.execute("ALTER TABLE users SET account_status = 'Suspended' WHERE email=%s;",(email,))  
+

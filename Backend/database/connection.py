@@ -14,3 +14,7 @@ def connect_db():
     
     except Exception as e:
         return e
+
+def close_db(connection,cursor):
+    connection.close()
+    cursor.close()
