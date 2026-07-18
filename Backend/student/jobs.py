@@ -15,9 +15,7 @@ from Backend.database.search_queries import (
 
 def latest_jobs():
 
-    return get_latest_jobs(
-        connect_db
-    )
+    return get_latest_jobs(connect_db)
 
 
 def job_details(job_id):
@@ -75,8 +73,15 @@ def recommended_jobs(cgpa):
         cgpa
     )
 
+
 def get_all_jobs():
+
     return get_jobs(connect_db)
 
+
 def get_job_details(job_id):
-    return details(connect_db,job_id)
+
+    return details(
+        connect_db,
+        job_id
+    )

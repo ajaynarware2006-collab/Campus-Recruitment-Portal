@@ -26,14 +26,14 @@ def post_job(
     status="Open"
 ):
 
-    if job_title.strip() == "":
-        return False
+    if not job_title.strip():
+        return "Job title cannot be empty."
 
-    if job_description.strip() == "":
-        return False
+    if not job_description.strip():
+        return "Job description cannot be empty."
 
     if openings <= 0:
-        return False
+        return "Openings must be greater than 0."
 
     job_id = create_job(
         connect_db,
@@ -54,7 +54,7 @@ def post_job(
     )
 
     if job_id is None:
-        return False
+        return "Unable to create job."
 
     return job_id
 
@@ -76,16 +76,16 @@ def edit_job(
     status
 ):
 
-    if job_title.strip() == "":
-        return False
+    if not job_title.strip():
+        return "Job title cannot be empty."
 
-    if job_description.strip() == "":
-        return False
+    if not job_description.strip():
+        return "Job description cannot be empty."
 
     if openings <= 0:
-        return False
+        return "Openings must be greater than 0."
 
-    return update_job(
+    updated = update_job(
         connect_db,
         job_id,
         job_title,
@@ -103,20 +103,38 @@ def edit_job(
         status
     )
 
+    if not updated:
+        return "Unable to update job."
+
+    return updated
+
 
 def remove_job(job_id):
 
-    return delete_job(connect_db, job_id)
+    deleted = delete_job(
+        connect_db,
+        job_id
+    )
+
+    if not deleted:
+        return "Unable to delete job."
+
+    return deleted
 
 
 def view_job(job_id):
 
-    return get_job(job_id, connect_db)
+    return get_job(
+        job_id,
+        connect_db
+    )
 
 
 def view_all_jobs():
 
-    return get_all_jobs(connect_db)
+    return get_all_jobs(
+        connect_db
+    )
 
 
 def view_my_jobs(recruiter_profile_id):

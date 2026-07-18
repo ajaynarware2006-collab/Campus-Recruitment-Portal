@@ -24,34 +24,54 @@ def view_user(user_id):
 
 def activate_user(user_id):
 
-    return update_account_status(
+    result = update_account_status(
         connect_db,
         user_id,
         "Active"
     )
 
+    if not result:
+        return "Unable to activate user."
+
+    return result
+
 
 def block_user(user_id):
 
-    return update_account_status(
+    result = update_account_status(
         connect_db,
         user_id,
         "Blocked"
     )
 
+    if not result:
+        return "Unable to block user."
+
+    return result
+
 
 def suspend_user(user_id):
 
-    return update_account_status(
+    result = update_account_status(
         connect_db,
         user_id,
         "Suspended"
     )
 
+    if not result:
+        return "Unable to suspend user."
+
+    return result
+
 
 def remove_user(user_id):
 
-    return delete_user(
+    result = delete_user(
         connect_db,
         user_id
     )
+
+    if not result:
+        return "Unable to delete user."
+
+    return result

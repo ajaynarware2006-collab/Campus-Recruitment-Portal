@@ -32,37 +32,37 @@ def complete_recruiter_profile(
 ):
 
     if not validate_hr_name(hr_name):
-        return False
+        return "Invalid HR name."
 
     if not validate_company_name(company_name):
-        return False
+        return "Invalid company name."
 
     if not validate_designation(designation):
-        return False
+        return "Invalid designation."
 
     if not validate_company_email(company_email):
-        return False
+        return "Invalid company email."
 
     if not validate_company_contact(company_contact):
-        return False
+        return "Invalid company contact."
 
     if not validate_company_website(company_website):
-        return False
+        return "Invalid company website."
 
     if not validate_industry(industry):
-        return False
+        return "Invalid industry."
 
     if not validate_company_size(company_size):
-        return False
+        return "Invalid company size."
 
     if not validate_headquarters(headquarters):
-        return False
+        return "Invalid headquarters."
 
     if not validate_company_logo(company_logo):
-        return False
+        return "Invalid company logo."
 
     if not validate_company_description(company_description):
-        return False
+        return "Invalid company description."
 
     recruiter_profile_id = create_recruiter_profile(
         connect_db,
@@ -81,6 +81,6 @@ def complete_recruiter_profile(
     )
 
     if recruiter_profile_id is None:
-        return False
+        return "Unable to create recruiter profile."
 
-    return True
+    return recruiter_profile_id

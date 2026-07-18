@@ -23,36 +23,36 @@ from pages.manage_users import show_manage_users
 from pages.reports import show_reports
 
 
+PAGE_ROUTES = {
+    "home": show_home,
+    "login": show_login,
+    "signup": show_signup,
+    "forgot_password": show_forgot_password,
+
+    "student_dashboard": show_student_dashboard,
+    "student_profile": show_student_profile,
+    "browse_jobs": show_browse_jobs,
+    "job_details": show_job_details,
+    "application_history": show_application_history,
+
+    "recruiter_dashboard": show_recruiter_dashboard,
+    "recruiter_profile": show_recruiter_profile,
+    "post_job": show_post_job,
+    "manage_jobs": show_manage_jobs,
+    "view_applications": show_view_applications,
+    "recruiter_analytics": show_recruiter_analytics,
+
+    "admin_dashboard": show_admin_dashboard,
+    "manage_users": show_manage_users,
+    "reports": show_reports,
+}
+
+
 def render_page():
 
-    page = st.session_state.current_page
+    page = st.session_state.get("current_page", "home")
 
-    page_routes = {
-
-        "home": show_home,
-        "login": show_login,
-        "signup": show_signup,
-        "forgot_password": show_forgot_password,
-
-        "student_dashboard": show_student_dashboard,
-        "student_profile": show_student_profile,
-        "browse_jobs": show_browse_jobs,
-        "job_details": show_job_details,
-        "application_history": show_application_history,
-
-        "recruiter_dashboard": show_recruiter_dashboard,
-        "recruiter_profile": show_recruiter_profile,
-        "post_job": show_post_job,
-        "manage_jobs": show_manage_jobs,
-        "view_applications": show_view_applications,
-        "recruiter_analytics": show_recruiter_analytics,
-
-        "admin_dashboard": show_admin_dashboard,
-        "manage_users": show_manage_users,
-        "reports": show_reports
-    }
-
-    page_function = page_routes.get(page)
+    page_function = PAGE_ROUTES.get(page)
 
     if page_function:
         page_function()

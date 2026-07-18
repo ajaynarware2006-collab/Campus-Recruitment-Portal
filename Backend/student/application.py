@@ -20,7 +20,7 @@ def apply_for_job(
     )
 
     if application_id is None:
-        return False
+        return None
 
     return application_id
 
@@ -54,5 +54,12 @@ def view_application(
         connect_db
     )
 
-def view_application_history(student_id):
-    return get_application_history(connect_db,student_id)
+
+def view_application_history(
+    student_profile_id
+):
+
+    return get_application_history(
+        connect_db,
+        student_profile_id
+    )

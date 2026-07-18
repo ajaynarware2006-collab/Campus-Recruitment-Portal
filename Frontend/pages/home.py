@@ -12,7 +12,7 @@ def redirect_dashboard():
     role = get_user_role()
 
     if role == "Student":
-        set_current_page("student_dashboard")
+        set_current_page("student_profile")
 
     elif role == "Recruiter":
         set_current_page("recruiter_dashboard")
@@ -29,28 +29,36 @@ def show_home():
         redirect_dashboard()
         return
 
-    left, center, right = st.columns([1, 2, 1])
+    _, center, _ = st.columns([1, 2, 1])
 
     with center:
 
         st.markdown(
-            "<h1 style='text-align:center;'>Campus Recruitment Portal</h1>",
+            """
+            <h1 style="text-align:center;">
+                🎓 Campus Recruitment Portal
+            </h1>
+            """,
             unsafe_allow_html=True
         )
 
-        st.write("")
-        st.write("")
-
         st.markdown(
             """
-            <div style='text-align:center;font-size:18px;'>
-                Find internships, jobs and connect students with recruiters.
-            </div>
+            <p style="text-align:center;font-size:18px;color:gray;">
+                Connect Students, Recruiters and Opportunities
+            </p>
             """,
             unsafe_allow_html=True
         )
 
         st.write("")
+        st.write("")
+
+        st.info(
+            "Build your profile, explore jobs, apply with one click, "
+            "and track your applications—all from one platform."
+        )
+
         st.write("")
         st.write("")
 
@@ -59,7 +67,7 @@ def show_home():
         with col1:
 
             if st.button(
-                "Login",
+                "🔑 Login",
                 use_container_width=True
             ):
                 set_current_page("login")
@@ -68,7 +76,7 @@ def show_home():
         with col2:
 
             if st.button(
-                "Sign Up",
+                "📝 Sign Up",
                 use_container_width=True
             ):
                 set_current_page("signup")
